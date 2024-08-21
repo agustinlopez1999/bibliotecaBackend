@@ -4,10 +4,11 @@ USE bibliotecaDatabase;
 
 CREATE TABLE libro(
     id INT(100) NOT NULL AUTO_INCREMENT,
-    title varchar(45) NOT NULL,
+    title varchar(100) NOT NULL,
     author varchar(45) NOT NULL,
     genre varchar(45) NOT NULL,
     cover varchar(100),
+    language varchar(45) NOT NULL,
     PRIMARY KEY(id)
 );
 
