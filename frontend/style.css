@@ -1,0 +1,71 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+#book-container {
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+
+#title {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+.box {
+  width: 30vh; /* Ancho fijo para las cajas */
+  height: 60vh; /* Altura fija para las cajas */
+  margin: 20px;
+  padding: 10px; /* Menos padding para que los elementos estén más apretados */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye el espacio entre los elementos */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.1); /* Aumenta el tamaño de la imagen al pasar el ratón */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  cursor: pointer; /* Cambia el cursor para indicar que es interactivo */
+}
+
+.book_title {
+  font-size: 18px; /* Tamaño de fuente ajustado */
+  color: #333;
+  margin-bottom: 5px; /* Menos margen para acercar al siguiente elemento */
+}
+
+.book_cover {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 60%; /* Altura fija para las imágenes */
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
+}
+
+.writer {
+  font-size: 14px; /* Tamaño de fuente ajustado */
+  color: #666;
+  margin: 5px 0; /* Espacio entre los elementos de texto */
+}
+
+.genre,
+.language {
+  font-size: 12px;
+  color: #666;
+  margin: 5px 0;
+}
