@@ -1,10 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const bookContainer = document.getElementById("book-container");
+  const searchButton = document.getElementById("search-button");
+  const searchInput = document.getElementById("search-input");
 
   // Función para obtener los libros desde la API
-  const fetchBooks = async () => {
+  const fetchBooks = async (query = "") => {
     try {
-      const response = await fetch("http://localhost:3000/api/libros/");
+      let url = "http://localhost:3000/api/libros/";
+      if (query) {
+        url = `http://localhost:3000/api/libros/search/${query}`;
+      }
+      const response = await fetch(url);
       const books = await response.json();
       displayBooks(books);
     } catch (error) {
@@ -14,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Función para mostrar los libros en el DOM
   const displayBooks = (books) => {
+    bookContainer.innerHTML = "";
     books.forEach((book) => {
       const bookElement = document.createElement("div");
       bookElement.classList.add("box");
@@ -30,4 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Llamar a la función para obtener y mostrar los libros
   fetchBooks();
+
+  // Manejar el evento de búsqueda
+  searchButton.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      fetchBooks(query);
+    } else {
+      fetchBooks(); // Si el input está vacío, mostrar todos los libros
+    }
+  });
 });
