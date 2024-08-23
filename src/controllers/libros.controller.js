@@ -27,6 +27,22 @@ export const getLibro = async (req, res) => {
   }
 };
 
+export const getTitulo = async (req, res) => {
+  const titleReq = `%${req.params.title}%`;
+  try {
+    const [rows] = await pool.query("SELECT * FROM libro WHERE title LIKE ?", [
+      titleReq,
+    ]);
+    if (rows.length <= 0)
+      return res.status(404).json({ message: "No se encontraron resultados" });
+    else res.json(rows);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Algo no funcionó",
+    });
+  }
+};
+
 export const postLibros = async (req, res) => {
   const { title, author, genre, cover, language } = req.body;
   try {

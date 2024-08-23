@@ -5,6 +5,7 @@ import {
   postLibros,
   updateLibros,
   deleteLibros,
+  getTitulo,
 } from "../controllers/libros.controller.js";
 
 const router = Router();
@@ -12,6 +13,7 @@ const router = Router();
 //get
 router.get("/libros", getLibros);
 router.get("/libros/:id", getLibro);
+router.get("/libros/search/:title", getTitulo);
 //post
 router.post("/libros", postLibros);
 //put
